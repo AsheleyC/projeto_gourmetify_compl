@@ -17,7 +17,8 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .container{
+
+        .container {
             background-color: #fff8ef;
             border-radius: 15px;
             padding: 5px;
@@ -28,7 +29,7 @@
 
 <body class="bg-light">
 
-    <div class="container mt-5" style="max-width: 500px;">
+    <div class="container mt-5" style="max-width: 500px;" id="div_principal">
         <br>
         <div class="text-center mb-4">
             <img src="../logo.png" width="120">
@@ -60,6 +61,8 @@
     const btn_log = document.getElementById('btn_logar')
     const btn_home = document.getElementById('btn_home')
 
+    const inputs = div_principal.querySelectorAll('input')
+
     btn_cad.addEventListener('click', async () => {
         //Primeira Etapa: Pegar informações dos inputs
         const nome = document.getElementById('input_nome').value
@@ -83,7 +86,13 @@
         //Terceira Etapa: Pegar a resposta do back-end
         if (resposta.ok == true) {
             const dados = await resposta.json()
-            document.getElementById('resultado').innerText = dados.resposta
+            if (dados.status == false) {
+                document.getElementById('resultado').innerText = dados.resposta
+            } else {
+                document.getElementById('resultado').innerText = dados.resposta
+                inputs.forEach(input => input.value = '')
+            }
+
         } else {
             const dados = await resposta.json()
             document.getElementById('resultado').innerText = dados.resposta

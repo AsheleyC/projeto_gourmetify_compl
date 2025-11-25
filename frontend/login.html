@@ -28,7 +28,7 @@
 
 <body class="bg-light">
 
-    <div class="container mt-5" style="max-width: 500px;">
+    <div class="container mt-5" style="max-width: 500px;" id="div_principal">
         <br>
         <div class="text-center mb-4">
             <img src="../logo.png" width="120">
@@ -57,6 +57,8 @@
     const btn_entrar = document.getElementById('btn_entrar')
     const btn_cad = document.getElementById('btn_cadastro')
     const btn_home = document.getElementById('btn_home')
+    
+    const inputs = div_principal.querySelectorAll('input')
 
     btn_entrar.addEventListener('click', async () => {
         const email = document.getElementById('input_email').value
@@ -76,8 +78,12 @@
 
         if (resposta.ok == true) {
             const dados = await resposta.json()
-            alert(dados.resposta)
-
+            if (dados.status == false) {
+                alert(dados.resposta)
+            } else {
+                alert(dados.resposta)
+                inputs.forEach(input => input.value = '')
+            }
         } else {
             const dados = await resposta.json()
             alert(dados.resposta)
@@ -87,6 +93,8 @@
     btn_cad.addEventListener('click', () => {
         window.location.href = "cadastro.html"
     })
+
+
     btn_home.addEventListener('click', () => {
         window.location.href = "index.html"
     })

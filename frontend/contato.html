@@ -82,6 +82,8 @@
     const btn_enviar = document.getElementById('btn_enviar')
     const btn_home = document.getElementById('btn_home')
 
+    const inputs = dados.querySelectorAll('input')
+
 
     btn_enviar.addEventListener('click', async () => {
         const nome = document.getElementById('input_nome').value
@@ -104,9 +106,15 @@
                 "mensagem": mensagem
             })
         })
+        
         if (resposta.ok == true) {
             const dados = await resposta.json()
-            document.getElementById('resultado').innerText = dados.resposta
+            if (dados.status == false) {
+                document.getElementById('resultado').innerText = dados.resposta
+            } else {
+                document.getElementById('resultado').innerText = dados.resposta
+                inputs.forEach(input => input.value = '')
+            }
         } else {
             const dados = await resposta.json()
             document.getElementById('resultado').innerText = dados.resposta
