@@ -24,6 +24,7 @@
         <a href="#">RECEITAS</a>
         <a href="#" id="a_contato">FALE CONOSCO</a>
         <a href="#" id="a_login">FAZER LOGIN</a>
+        <a href="#" id="a_cadastro">CADASTRE-SE</a>
       </nav>
 
       <div class="search">
@@ -67,6 +68,7 @@
 <script>
   const contato = document.getElementById('a_contato')
   const login = document.getElementById('a_login')
+  const cadastro = document.getElementById('a_cadastro')
 
   contato.addEventListener('click', () => {
     window.location.href = "contato.html"
@@ -74,6 +76,10 @@
 
   login.addEventListener('click', () => {
     window.location.href = "login.html"
+  })
+
+  cadastro.addEventListener('click', () => {
+    window.location.href = "cadastro.html"
   })
 </script>
 
