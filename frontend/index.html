@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOURMETIFY</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <div class="menu">
+      <div class="logo">
+        <img src="../logo.png" alt="logo">
+        <span>GOURMETIFY</span>
+      </div>
+
+      <nav>
+        <a href="#">SOBRE NÓS</a>
+        <a href="#">RECEITAS</a>
+        <a href="#" id="a_contato">FALE CONOSCO</a>
+        <a href="#" id="a_login">FAZER LOGIN</a>
+      </nav>
+
+      <div class="search">
+        <input type="text" placeholder="Pesquise sua receita...">
+        <button>🔍</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Culinária é Arte</h1>
+      <p>Descubra receitas criativas e ingredientes frescos para transformar seu dia a dia em momentos de sabor.</p>
+    </div>
+  </header>
+
+
+  <section class="steps">
+    <div class="step">
+      <div class="icon">📒</div>
+      <h3>OPÇÕES</h3>
+      <p>Encontre pratos incríveis para cada ocasião.</p>
+    </div>
+
+    <div class="step">
+      <div class="icon">🧈</div>
+      <h3>INGREDIENTES</h3>
+      <p>Veja os ingredientes e siga as instruções detalhadas.</p>
+    </div>
+
+    <div class="step">
+      <div class="icon">👩🏽‍🍳</div>
+      <h3>RECEITAS</h3>
+      <p>Prepare com amor e sirva momentos inesquecíveis.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Gourmetify — Criado com amor por <span>equipe gormetify</span> 🍴</p>
+  </footer>
+
+</body>
+<script>
+  const contato = document.getElementById('a_contato')
+  const login = document.getElementById('a_login')
+
+  contato.addEventListener('click', () => {
+    window.location.href = "contato.html"
+  })
+
+  login.addEventListener('click', () => {
+    window.location.href = "login.html"
+  })
+</script>
+
+</html>

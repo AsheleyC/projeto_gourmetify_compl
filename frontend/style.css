@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    font-family: 'Lora', serif;
+    background-color: #faf3eb;
+    color: #000000;
+}
+
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/17549157706899e3ba1349b.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 45vh;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 70px;
+    background: rgba(82, 47, 3, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #d7a45f;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+
+nav a:hover {
+    color: #d7a45f;
+    text-decoration: underline;
+}
+
+
+.search {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+.search input {
+    background: none;
+    border: none;
+    color: #fff;
+    outline: none;
+    padding: 5px;
+}
+
+
+.search button {
+    background: none;
+    border: none;
+    color: #d7a45f;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.hero {
+    text-align: center;
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+}
+
+
+.hero h1 {
+    /*--CULINÁRIA É ARTE-*/
+    font-size: 2.2em;
+    color: #d7a45f;
+    margin-bottom: 10px;
+}
+
+
+.hero p {
+    /*-texto em baixo do CULINARIA É ARTE -*/
+    color: #ffffff;
+    font-size: 1em;
+    line-height: 1.6em;
+    margin-bottom: 20px;
+}
+
+
+.btn {
+    text-decoration: none;
+    background-color: #d7a45f;
+    /*cor do botão ver receitas*/
+    color: #000000;
+    /*escrita dentro*/
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+
+.btn:hover {
+    background-color: #f8cfa8;
+    /*PARTE DO VER RECEITAS (ao passar o mouse fica dessa cor*/
+}
+/*  OS 3 BOTOES  */
+.steps {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+    background-color: #fcf5ef;
+    /* FUNDO DA PATE DOS BOTÕES*/
+    padding: 70px 20px;
+    margin-top: 80px;
+    /* adiciona espaço entre o banner e as etapas */
+}
+
+
+/*BOTÕES DE OPÇOES INGREDIENTES E RECEITAS*/
+.step {
+    width: 30%;
+    min-width: 250px;
+    color: #000000;
+    padding: 20px;
+    border: 1px solid #f7d29b;
+    /*BORDA DOS BOTÕES*/
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+
+.step:hover {
+    background-color: #f0bd75;
+    /*PARTE DE DENTRO DO BOTÃO QUANDO FOR CLICAR*/
+    color: #ffffff;
+    /*ESCRITA DETRO DO BATÃO MUDA PARA ESSA COR*/
+    transform: translateY(-5px);
+}
+
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+
+.step h3 {
+    color: #d7a45f;
+    margin-bottom: 10px;
+}
+
+
+.step:hover h3 {
+    color: #ffffff;
+    /*ESCRITA DETRO DO BATÃO MUDA PARA ESSA COR*/
+}
+
+
+footer {
+    background-color: #000000;
+    color: #d7a45f;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+
+footer span {
+    text-decoration: underline;
+}

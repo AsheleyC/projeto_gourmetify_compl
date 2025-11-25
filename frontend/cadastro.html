@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/17549157706899e3ba1349b.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 45vh;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .container{
+            background-color: #fff8ef;
+            border-radius: 15px;
+            padding: 5px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5" style="max-width: 500px;">
+        <br>
+        <div class="text-center mb-4">
+            <img src="../logo.png" width="120">
+            <h2 class="mt-2">Cadastre-se</h2>
+        </div>
+
+        <label for="input_nome" class="form-label">Nome Completo</label>
+        <input type="text" id="input_nome" class="form-control mb-3" placeholder="Nome Completo">
+
+        <label for="input_email" class="form-label">E-mail</label>
+        <input type="email" id="input_email" class="form-control mb-3" placeholder="E-mail">
+
+        <label for="input_senha" class="form-label">Senha</label>
+        <input type="password" id="input_senha" class="form-control mb-4" placeholder="Senha">
+
+        <button id="btn_cadastrar" class="btn btn-dark w-100 mb-2">Cadastrar</button>
+        <button id="btn_logar" class="btn btn-outline-dark w-100">Fazer Login</button>
+        <br>
+        <br>
+        <button id="btn_home" class="btn btn-outline-dark d-grid gap-2 col-6 mx-auto">Home</button>
+
+        <p id="resultado" class="text-center mt-3 text-danger"></p>
+    </div>
+
+</body>
+<script>
+    //Criar um evento para quando clicar no botão
+    const btn_cad = document.getElementById('btn_cadastrar')
+    const btn_log = document.getElementById('btn_logar')
+    const btn_home = document.getElementById('btn_home')
+
+    btn_cad.addEventListener('click', async () => {
+        //Primeira Etapa: Pegar informações dos inputs
+        const nome = document.getElementById('input_nome').value
+        const email = document.getElementById('input_email').value
+        const senha = document.getElementById('input_senha').value
+
+        //Segunda Etapa: Fazer a requisição para o back-end
+        const resposta = await fetch(`http://localhost:3000/cadastro`, {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "nome_user": nome,
+                "email": email,
+                "senha": senha
+            })
+        })
+
+        //Terceira Etapa: Pegar a resposta do back-end
+        if (resposta.ok == true) {
+            const dados = await resposta.json()
+            document.getElementById('resultado').innerText = dados.resposta
+        } else {
+            const dados = await resposta.json()
+            document.getElementById('resultado').innerText = dados.resposta
+        }
+
+    })
+
+    btn_log.addEventListener('click', () => {
+        window.location.href = "login.html"
+    })
+
+    btn_home.addEventListener('click', () => {
+        window.location.href = "index.html"
+    })
+</script>
+
+</html>
