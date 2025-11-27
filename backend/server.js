@@ -64,19 +64,19 @@ server.post('/cadastro', async (req, res) => {
         //tratando as informações
         senha = senha.trim()
         if (senha == '') {
-            return res.json({ "resposta": 'Preencha uma senha válida', "status": false  })
+            return res.json({ "resposta": 'Preencha uma senha válida', "status": false })
         } else if (senha.length < 6) {
-            return res.json({ "resposta": 'Preencha uma senha com no mínimo 6 caracteres' , "status": false})
+            return res.json({ "resposta": 'Preencha uma senha com no mínimo 6 caracteres', "status": false })
         } else if (email < 6) {
             return res.json({ "resposta": 'Preencha um email', "status": false })
         } else if (nome_user.length < 4) {
-            return res.json({ "resposta": 'Preencha um nome' , "status": false})
+            return res.json({ "resposta": 'Preencha um nome', "status": false })
         } else if (!email.includes('@')) {
-            return res.json({ "resposta": 'Preencha um email válido' , "status": false})
+            return res.json({ "resposta": 'Preencha um email válido', "status": false })
         } else if (email.includes(' ') == true) {
-            return res.json({ "resposta": 'Preencha um email válido' , "status": false})
+            return res.json({ "resposta": 'Preencha um email válido', "status": false })
         } else if (email.includes('.') == false) {
-            return res.json({ "resposta": 'Preencha um email válido' , "status": false})
+            return res.json({ "resposta": 'Preencha um email válido', "status": false })
         }
 
         //verificar se o email já existe
@@ -109,9 +109,9 @@ server.post('/login', async (req, res) => {
 
         senha = senha.trim()
         if (senha == '') {
-            return res.json({ "resposta": "Usuário ou senha inválida" , "status": false})
+            return res.json({ "resposta": "Usuário ou senha inválida", "status": false })
         } else if (senha.length < 6) {
-            return res.json({ "resposta": "Usuário ou senha inválida" , "status": false})
+            return res.json({ "resposta": "Usuário ou senha inválida", "status": false })
         }
 
         const hash = crypto.createHash('sha256').update(senha).digest('hex')
@@ -119,7 +119,7 @@ server.post('/login', async (req, res) => {
         const [resultado] = await conexao.query(sql, [email, hash])
 
         if (resultado.length == 1.) {
-            res.json({ "resposta": "Você está Conectado" , "status": true})
+            res.json({ "resposta": "Você está Conectado", "status": true })
         } else {
             res.json({ "resposta": 'Usuário ou Senha inválida' })
         }
@@ -128,5 +128,42 @@ server.post('/login', async (req, res) => {
         console.log(error)
 
         return res.json({ "resposta": "Erro inesperado. Tente novamente mais tarde." })
+    }
+})
+
+server.put('/esqueceu', async (req, res) => {
+    try {
+        const { email } = req.body
+        let { senha } = req.body
+
+        //tratando as informações
+        senha = senha.trim()
+        if (senha == '') {
+            return res.json({ "resposta": 'Preencha uma senha válida', "status": false })
+        } else if (senha.length < 6) {
+            return res.json({ "resposta": 'Preencha uma senha com no mínimo 6 caracteres', "status": false })
+        } else if (email < 6) {
+            return res.json({ "resposta": 'Preencha um email', "status": false })
+        } else if (!email.includes('@')) {
+            return res.json({ "resposta": 'Preencha um email válido', "status": false })
+        } else if (email.includes(' ') == true) {
+            return res.json({ "resposta": 'Preencha um email válido', "status": false })
+        } else if (email.includes('.') == false) {
+            return res.json({ "resposta": 'Preencha um email válido', "status": false })
+        }
+
+        //criando a Hash da senha
+        const hash = crypto.createHash('sha256').update(senha).digest('hex')
+
+        sql = `UPDATE usuarios SET senha = ? WHERE email = ?`
+        const [resultado] = await conexao.query(sql, [ hash , email])
+
+        if (resultado.affectedRows == 1) {
+            return res.json({ "resposta": "Senha Atualizada com Sucesso!!", "status": true })
+        } else {
+            return res.json({ "resposta": "Erro ao tentar atualizar a Senha" })
+        }
+    } catch (error) {
+        console.log(error)
     }
 })
