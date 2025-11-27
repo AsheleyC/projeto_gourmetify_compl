@@ -24,10 +24,33 @@
             padding: 5px;
         }
     </style>
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
+
+    <header>
+        <div class="menu">
+            <div class="logo">
+                <img src="../logo.png" alt="logo">
+                <span>GOURMETIFY</span>
+            </div>
+
+            <nav>
+                <a href="#" id="btn_home">SOBRE NÓS</a>
+                <a href="#">RECEITAS</a>
+                <a href="#" id="a_contato">FALE CONOSCO</a>
+                <a href="#" id="a_login">FAZER LOGIN</a>
+                <a href="#" id="a_cadastro">CADASTRE-SE</a>
+            </nav>
+
+            <div class="search">
+                <input type="text" placeholder="Pesquise sua receita...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
 
     <div class="container mt-5" style="max-width: 500px;" id="div_principal">
         <br>
@@ -49,7 +72,6 @@
         <button id="btn_logar" class="btn btn-outline-dark w-100">Fazer Login</button>
         <br>
         <br>
-        <button id="btn_home" class="btn btn-outline-dark d-grid gap-2 col-6 mx-auto">Home</button>
 
         <p id="resultado" class="text-center mt-3 text-danger"></p>
     </div>
@@ -62,6 +84,22 @@
     const btn_home = document.getElementById('btn_home')
 
     const inputs = div_principal.querySelectorAll('input')
+
+    const contato = document.getElementById('a_contato')
+    const login = document.getElementById('a_login')
+    const cadastro = document.getElementById('a_cadastro')
+
+    contato.addEventListener('click', () => {
+        window.location.href = "contato.html"
+    })
+
+    login.addEventListener('click', () => {
+        window.location.href = "login.html"
+    })
+
+    cadastro.addEventListener('click', () => {
+        window.location.href = "cadastro.html"
+    })
 
     btn_cad.addEventListener('click', async () => {
         //Primeira Etapa: Pegar informações dos inputs
