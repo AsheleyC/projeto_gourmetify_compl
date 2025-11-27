@@ -20,6 +20,7 @@ header {
 }
 
 
+
 .menu {
     display: flex;
     justify-content: space-between;
@@ -175,6 +176,7 @@ nav a:hover {
 .step h3 {
     color: #d7a45f;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 
