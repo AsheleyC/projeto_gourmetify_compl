@@ -121,7 +121,7 @@ server.post('/login', async (req, res) => {
         if (resultado.length == 1.) {
             res.json({ "resposta": "Você está Conectado", "status": true })
         } else {
-            res.json({ "resposta": 'Usuário ou Senha inválida' })
+            res.json({ "resposta": 'Usuário ou Senha inválida', "status": false })
         }
 
     } catch (error) {
