@@ -123,7 +123,6 @@ server.post('/login', async (req, res) => {
         } else {
             res.json({ "resposta": 'Usuário ou Senha inválida', "status": false })
         }
-
     } catch (error) {
         console.log(error)
 
