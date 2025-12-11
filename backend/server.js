@@ -14,7 +14,6 @@ server.listen(porta, () => {
 })
 
 // CONTATO
-
 server.post('/contate', async (req, res) => {
     try {
         const { nome, email, telefone, assunto, mensagem } = req.body
@@ -52,6 +51,17 @@ server.post('/contate', async (req, res) => {
     }
 })
 
+server.get('/verContatos', async (req, res) => {
+    try {
+        const sql = "SELECT nome, email, telefone, assunto, mensagem, data, status FROM contatos"
+        const [resultado] = await conexao.query(sql)
+
+        res.json({"resposta" : resultado})
+
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 
 // LOGIN E CADASTRO
@@ -155,7 +165,7 @@ server.put('/esqueceu', async (req, res) => {
         const hash = crypto.createHash('sha256').update(senha).digest('hex')
 
         sql = `UPDATE usuarios SET senha = ? WHERE email = ?`
-        const [resultado] = await conexao.query(sql, [ hash , email])
+        const [resultado] = await conexao.query(sql, [hash, email])
 
         if (resultado.affectedRows == 1) {
             return res.json({ "resposta": "Senha Atualizada com Sucesso!!", "status": true })

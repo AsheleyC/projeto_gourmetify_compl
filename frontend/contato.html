@@ -40,7 +40,6 @@
 
             <nav>
                 <a href="#" id="btn_home">SOBRE NÓS</a>
-                <a href="#">RECEITAS</a>
                 <a href="#" id="a_contato">FALE CONOSCO</a>
                 <a href="#" id="a_login">FAZER LOGIN</a>
                 <a href="#" id="a_cadastro">CADASTRE-SE</a>
@@ -92,8 +91,9 @@
             <br>
 
             <button id="btn_enviar" class="btn btn-outline-dark d-grid gap-2 col-6 mx-auto">Enviar</button>
-            <br>
+            <p id="ver_contatos" class="text-center mt-3 text-secondary" style="cursor: pointer;"> Ver Contatos</p>
             <p id="resultado" class="text-center mt-3 text-danger"> </p>
+            
         </div>
 
     </div>
@@ -103,7 +103,8 @@
 <script>
     const btn_enviar = document.getElementById('btn_enviar')
     const btn_home = document.getElementById('btn_home')
-
+    const ver_contatos = document.getElementById('ver_contatos')
+    
     const inputs = dados.querySelectorAll('input')
 
 
@@ -160,6 +161,9 @@
 
     btn_home.addEventListener('click', () => {
         window.location.href = "index.html"
+    })
+    ver_contatos.addEventListener('click', () => {
+        window.location.href = "ver_contatos.html"
     })
 
 </script>

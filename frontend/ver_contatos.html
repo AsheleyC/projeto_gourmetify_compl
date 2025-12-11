@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Contatos</title>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/17549157706899e3ba1349b.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 45vh;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .container {
+            background-color: #fff8ef;
+            border-radius: 15px;
+            padding: 5px;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <div class="logo">
+                <img src="../logo.png" alt="logo">
+                <span>GOURMETIFY</span>
+            </div>
+
+            <nav>
+                <a href="#" id="btn_home">SOBRE NÓS</a>
+                <a href="#" id="a_contato">FALE CONOSCO</a>
+                <a href="#" id="a_login">FAZER LOGIN</a>
+                <a href="#" id="a_cadastro">CADASTRE-SE</a>
+            </nav>
+
+            <div class="search">
+                <input type="text" placeholder="Pesquise sua receita...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-5" style="max-width: 75%;">
+        <br>
+        <div class="text-center mb-4">
+            <img src="../logo.png" width="120">
+            <h2 class="mt-2">Contatos</h2>
+        </div>
+
+        <button id="btn_mostrar" class="btn btn-outline-dark d-grid gap-2 col-6 mx-auto">Mostrar Contatos</button>
+        <br>
+
+        <div id="table" class="text-start" >
+
+        </div>
+    </div>
+
+</body>
+<script>
+    const contato = document.getElementById('a_contato')
+    const login = document.getElementById('a_login')
+    const cadastro = document.getElementById('a_cadastro')
+    const btn_mostrar = document.getElementById('btn_mostrar')
+    const table = document.getElementById('table')
+
+    btn_mostrar.addEventListener('click', async () => {
+        const resposta = await fetch(`http://localhost:3000/verContatos`)
+        const dados = await resposta.json()
+
+        const array = dados.resposta
+
+        console.log(array);
+
+        let tabela = `
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Assunto</th>
+                    <th>Mensagem</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>`
+
+        for (let i = 0; i < array.length; i++) {
+            tabela += `
+            <tr>
+                <td>${array[i].nome}</td>
+                <td>${array[i].email}</td>
+                <td>${array[i].assunto}</td>
+                <td>${array[i].mensagem}</td>
+                <td>${array[i].status}</td>
+            </tr>
+            `
+        }
+
+        tabela += `
+            </tbody>
+        </table>`
+
+        table.innerHTML = tabela
+
+    })
+
+    contato.addEventListener('click', () => {
+        window.location.href = "contato.html"
+    })
+
+    login.addEventListener('click', () => {
+        window.location.href = "login.html"
+    })
+
+    cadastro.addEventListener('click', () => {
+        window.location.href = "cadastro.html"
+    })
+</script>
+
+</html>
